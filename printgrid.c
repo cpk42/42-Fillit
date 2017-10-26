@@ -1,27 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pickuppiece.c                                      :+:      :+:    :+:   */
+/*   printgrid.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ckrommen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/10 12:16:25 by ckrommen          #+#    #+#             */
-/*   Updated: 2017/10/26 16:17:56 by ckrommen         ###   ########.fr       */
+/*   Created: 2017/10/24 17:07:23 by ckrommen          #+#    #+#             */
+/*   Updated: 2017/10/24 17:12:07 by ckrommen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-char	**pickuppiece(piece *head, char **grid)
+void	printgrid(char **grid)
 {
-	int i;
+	int row;
+	int col;
 
-	i = 0;
-	while (i < 4)
+	row = 0;
+	while (grid[row])
 	{
-		grid[head->row[i]][head->col[i]] = '.';
-		i++;
+		col = 0;
+		while (grid[row][col])
+		{
+			ft_putchar(grid[row][col]);
+			col++;
+		}
+		ft_putchar('\n');
+		row++;
 	}
-	head->placed = 0;
-	return (grid);
 }

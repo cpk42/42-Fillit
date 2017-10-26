@@ -6,7 +6,7 @@
 /*   By: ckrommen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/04 19:04:53 by ckrommen          #+#    #+#             */
-/*   Updated: 2017/10/16 13:42:13 by ckrommen         ###   ########.fr       */
+/*   Updated: 2017/10/26 16:18:49 by ckrommen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,21 +21,26 @@
 
 typedef struct	piece
 {
-//	int				height;
+	char			letter;
+	int				placed;
 	int				row[4];
 	int				col[4];
 	struct piece	*next;
 }				piece;
 
-char	**filetoarr(char *av);
+char	*filetoarr(char *av);
 piece	*newpiece();
 piece	*createpieces(char **grid, int row, int col, int i, piece *head);
 void	translate(piece *head, int row, int col);
-void	translatepiece(char **grid, piece *head, int row, int col);
+void	translatepiece(char **grid, piece *head, int row, int col, int size);
 char	**placepiece(piece *head, char **grid);
 char	**pickuppiece(piece *head, char **grid);
 int		isempty(piece *head, char **grid);
-char	**createmap(piece *head);
+char	**createmap(int size);
 int		countpiece(char *arr);
+int		tetchecker(char *grid);
+void	printgrid(char **map);
+void	solve(char **grid, piece *head, int row, int col, int size);
+//void	freemap(char **grid)
 
 #endif

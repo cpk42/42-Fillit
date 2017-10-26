@@ -1,27 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pickuppiece.c                                      :+:      :+:    :+:   */
+/*   charcount.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ckrommen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/10 12:16:25 by ckrommen          #+#    #+#             */
-/*   Updated: 2017/10/26 16:17:56 by ckrommen         ###   ########.fr       */
+/*   Created: 2017/10/24 17:27:21 by ckrommen          #+#    #+#             */
+/*   Updated: 2017/10/24 17:35:30 by ckrommen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-char	**pickuppiece(piece *head, char **grid)
+int	charcount(char **grid)
 {
-	int i;
+	int row;
+	int col;
+	int count;
 
-	i = 0;
-	while (i < 4)
+	row = 0;
+	count = 0;
+	while (grid[row])
 	{
-		grid[head->row[i]][head->col[i]] = '.';
-		i++;
+		col = 0;
+		while (grid[row][col])
+		{
+			count++;
+			col++;
+		}
+		row++;
 	}
-	head->placed = 0;
-	return (grid);
+	return (count);
 }

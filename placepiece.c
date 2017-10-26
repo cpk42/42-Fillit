@@ -6,7 +6,7 @@
 /*   By: ckrommen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/10 12:00:53 by ckrommen          #+#    #+#             */
-/*   Updated: 2017/10/16 15:58:30 by ckrommen         ###   ########.fr       */
+/*   Updated: 2017/10/26 15:39:54 by ckrommen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,10 @@ char	**placepiece(piece *head, char **grid)
 		grid[head->row[i]][head->col[i]] = '#';
 		i++;
 	}
+	head->placed = 1;
 	return (grid);
 }
-
+/*
 int main(int argc, char **av)
 {
 	piece *new;
@@ -36,8 +37,8 @@ int main(int argc, char **av)
 	map = filetoarr(av[1]);
 	new = newpiece();
 	new = createpieces(map, 0, 0, 0, new);
-	grid = createmap(new);
-	translatepiece(grid, new, 0, 10);
+	grid = createmap(countpiece(map));
+	translatepiece(grid, new, 0, 0);
 	if (isempty(new, grid))
 		placepiece(new, grid);
 //	translatepiece(grid, new->next, 0, 2);
@@ -50,3 +51,4 @@ int main(int argc, char **av)
 	//for (int x = 0; x < 10; x++)
 	//printf("%s\n", grid[x]);
 }
+*/

@@ -6,58 +6,31 @@
 /*   By: ckrommen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/12 15:48:17 by ckrommen          #+#    #+#             */
-/*   Updated: 2017/10/13 18:02:41 by ckrommen         ###   ########.fr       */
+/*   Updated: 2017/10/25 21:22:05 by ckrommen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-char	**createmap(piece *head)
+char	**createmap(int size)
 {
-	char **grid;
-	piece *fuck;
-	
-	fuck = head;
-	grid = (char **)malloc(sizeof(char *) * 10);
-	for (int i = 0; i < 10; i++)
-	{
-		grid[i] = ft_strnew(10);
-		for (int j = 0; j < 10; j++)
-		{
-			grid[i][j] = '.';
-		}
-	}
-	return (grid);
-}
-/*char	**createmap(char **map, piece *head)//This is all primarily bullshit
-{
-	char **grid;
-	int i;
-	int j;
+	char	**grid;
+	int		row;
+	int		col;
 
-	i = countpieces(head);
-	j = 0;
-	if (i < 2)
+	row = 0;
+	col = 0;
+	grid = (char **)malloc(sizeof(char *) * (size + 1));
+	while (row < size)
 	{
-		grid = (char **)malloc(sizeof(char *) * 4);
-		while (j < 4)
+		col = 0;
+		grid[row] = ft_strnew(size);
+		while (col < size)
 		{
-			grid[j] = ft_strnew(4);
-			ft_memset(grid[j], '.', 4);
-			j++;
+			grid[row][col] = '.';
+			col++;
 		}
+		row++;
 	}
-	else
-	{
-		grid = (char **)malloc(sizeof(char *) * (i + 1));
-		while (j < (i + 1))
-		{
-			grid[j] = ft_strnew(4);
-			ft_memset(grid[j], '.', 4);
-			j++;
-		}
-	}
-	ft_memdel(map);
 	return (grid);
 }
-*/

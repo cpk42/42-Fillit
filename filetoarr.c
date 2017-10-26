@@ -6,16 +6,15 @@
 /*   By: ckrommen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/04 19:02:45 by ckrommen          #+#    #+#             */
-/*   Updated: 2017/10/16 13:52:15 by ckrommen         ###   ########.fr       */
+/*   Updated: 2017/10/24 17:38:52 by ckrommen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-char	**filetoarr(char *av)
+char	*filetoarr(char *av)
 {
 	char	*s;
-	char	**grid;
 	int		i;
 	int		fd;
 	char	buf;
@@ -29,8 +28,6 @@ char	**filetoarr(char *av)
 		i++;
 	}
 	s[i] = '\0';
-	grid = ft_strsplit(s, '\n');
-	free(s);
 	close(fd);
-	return (grid);
+	return (s);
 }
