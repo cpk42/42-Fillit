@@ -6,7 +6,7 @@
 /*   By: ckrommen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/04 19:04:53 by ckrommen          #+#    #+#             */
-/*   Updated: 2017/10/26 19:55:22 by ckrommen         ###   ########.fr       */
+/*   Updated: 2017/10/26 16:18:49 by ckrommen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,7 @@ char	**createmap(int size);
 int		countpiece(char *arr);
 int		tetchecker(char *grid);
 void	printgrid(char **map);
-void	solve(char **grid, piece *head, int size);
-void	resetgrid(char **grid);
+void	solve(char **grid, piece *head, int row, int col, int size);
 //void	freemap(char **grid)
 
 #endif
