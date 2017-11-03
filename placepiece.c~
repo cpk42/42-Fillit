@@ -6,7 +6,7 @@
 /*   By: ckrommen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/10 12:00:53 by ckrommen          #+#    #+#             */
-/*   Updated: 2017/11/02 13:34:38 by ckrommen         ###   ########.fr       */
+/*   Updated: 2017/10/26 15:39:54 by ckrommen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	**placepiece(piece *head, char **grid)
 	i = 0;
 	while (i < 4)
 	{
-		grid[head->row[i]][head->col[i]] = head->letter;
+		grid[head->row[i]][head->col[i]] = '#';
 		i++;
 	}
 	head->placed = 1;

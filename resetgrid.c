@@ -6,13 +6,13 @@
 /*   By: ckrommen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/26 19:26:53 by ckrommen          #+#    #+#             */
-/*   Updated: 2017/10/26 19:34:52 by ckrommen         ###   ########.fr       */
+/*   Updated: 2017/11/02 14:06:47 by ckrommen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-void	resetgrid(char **grid)
+char	**resetgrid(char **grid)
 {
 	int row;
 	int col;
@@ -28,4 +28,5 @@ void	resetgrid(char **grid)
 		}
 		row++;
 	}
+	return (grid);
 }

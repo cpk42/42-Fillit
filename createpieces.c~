@@ -6,7 +6,7 @@
 /*   By: ckrommen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/09 13:03:33 by ckrommen          #+#    #+#             */
-/*   Updated: 2017/11/02 13:53:54 by ckrommen         ###   ########.fr       */
+/*   Updated: 2017/11/02 13:51:17 by ckrommen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ piece	*dellast(piece *head)
 		last = last->next;
 	}
 	seclast->next = NULL;
-	free(last);
 	return (head);
 }
 
@@ -54,7 +53,7 @@ piece	*createpieces(char **grid, int row, int col, int i, piece *head)
 		}
 		row++;
 	}
-	return (dellast(ptr));
+	return (ptr);
 }
 
 /*

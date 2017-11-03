@@ -6,7 +6,7 @@
 /*   By: ckrommen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/25 21:38:41 by ckrommen          #+#    #+#             */
-/*   Updated: 2017/11/02 21:06:30 by ckrommen         ###   ########.fr       */
+/*   Updated: 2017/11/02 20:34:28 by ckrommen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,14 @@ int		piecesplaced(piece *head)
 	return (1);
 }
 
-void	resetpieces(piece *head)
+piece	*resetpieces(piece *head)
 {
 	while (head)
 	{
 		head->placed = 0;
 		head = head->next;
 	}
+	return (head);
 }
 /*
 char	**findideal(char **grid, piece *head)// TRYING TO MAKE A VERTICAL PLACER FOR IDEAL PLACEMENTS:: ROW IS MAIN INCREMENTER INSTEAD OF COLUMN
@@ -162,14 +163,9 @@ void	solve(char **grid, piece *head, int size, piece *start)
 		{
 			grid = findideal(grid, ptr);
 			printgrid(grid);
-			ft_putchar(ptr->letter);
-			ft_putchar('\n');
 			solve(grid, head, size, start);
 		}
 		else
-		{
-			resetpieces(head);
-			solve(resetgrid(grid), pushtofront(head), size, start);
-		}
+			solve(resetgrid(grid), pushtofront(resetpieces(head)), size, start);
 	}
 }
