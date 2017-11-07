@@ -6,7 +6,7 @@
 /*   By: ckrommen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/24 14:55:58 by ckrommen          #+#    #+#             */
-/*   Updated: 2017/11/02 13:30:47 by ckrommen         ###   ########.fr       */
+/*   Updated: 2017/11/06 16:16:16 by ckrommen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ piece	*assignletter(piece *head)
 {
 	char	letter;
 	piece	*ptr;
+	piece	*prev;
 
 	ptr = head;
 	letter = 'A';
@@ -23,7 +24,10 @@ piece	*assignletter(piece *head)
 	{
 		head->letter = letter;
 		letter++;
+		prev = head;
 		head = head->next;
+		if (head)
+			head->prev = prev;
 	}
 	return (ptr);
 }

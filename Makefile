@@ -6,11 +6,11 @@
 #    By: ckrommen <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/10/05 13:16:08 by ckrommen          #+#    #+#              #
-#    Updated: 2017/11/02 13:35:33 by ckrommen         ###   ########.fr        #
+#    Updated: 2017/11/06 19:19:07 by ckrommen         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
-SRCS = filetoarr.c newpiece.c createpieces.c translate.c translatepiece.c placepiece.c isempty.c pickuppiece.c createmap.c countpiece.c tetchecker.c printgrid.c main.c solve.c resetgrid.c assignletter.c
+SRCS = filetoarr.c newpiece.c createpieces.c translate.c translatepiece.c placepiece.c isempty.c pickuppiece.c createmap.c countpiece.c tetchecker.c printgrid.c main.c solve.c resetgrid.c assignletter.c mapsize.c
 
 FLAGS = -Wall -Wextra -Werror
 

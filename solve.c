@@ -6,7 +6,7 @@
 /*   By: ckrommen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/25 21:38:41 by ckrommen          #+#    #+#             */
-/*   Updated: 2017/11/02 21:06:30 by ckrommen         ###   ########.fr       */
+/*   Updated: 2017/11/06 19:12:53 by ckrommen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,32 +35,6 @@ void	resetpieces(piece *head)
 		head = head->next;
 	}
 }
-/*
-char	**findideal(char **grid, piece *head)// TRYING TO MAKE A VERTICAL PLACER FOR IDEAL PLACEMENTS:: ROW IS MAIN INCREMENTER INSTEAD OF COLUMN
-{
-	int row;
-	int col;
-
-	col = 0;
-	row = 0;
-	while (grid[row][col])
-	{
-		row = 0;
-		while (grid[row])
-		{
-			translatepiece(grid, head, row, col, ft_strlen(grid[row]));
-			if (isempty(head, grid) && !head->placed)
-			{
-				placepiece(head, grid);
-				return (grid);
-			}
-			row++;
-		}
-		col++;
-	}
-	return (grid);
-}
-*/
 
 char	**findideal(char **grid, piece *head)
 {
@@ -104,6 +78,17 @@ piece	*pushtofront(piece *head)
 	return (head);
 }
 
+piece	*switchlink(piece *head)
+{
+	piece *temp;
+
+	temp = head;
+	head = head->next;
+	temp->next = head->next;
+	head->next = temp;
+	return (head);
+}
+
 int		placeable(char **grid, piece *head)
 {
 	int row;
@@ -116,8 +101,11 @@ int		placeable(char **grid, piece *head)
 		while (grid[row][col])
 		{
 			translatepiece(grid, head, row, col, ft_strlen(grid[row]));
+
 			if (isempty(head, grid))
+			{
 				return (1);
+			}
 			col++;
 		}
 		row++;
@@ -147,11 +135,91 @@ int		emptygrid(char **grid)
 
 void	solve(char **grid, piece *head, int size, piece *start)
 {
+	head = start;
+	if (piecesplaced(start))
+	{
+		printgrid(grid);
+		ft_putchar('\n');
+	}
+	else
+	{
+		while (head)
+		{
+			if (!head->placed && placeable(grid, head))
+			{
+				grid = findideal(grid, head);
+				solve(grid, head, size, start);
+			}
+			else if (!placeable(grid, head) && !head->next)
+			{
+				resetpieces(start);
+				grid = createmap(size+1);
+				solve(grid, head , size+1, start);
+			}
+			head = head->next;
+		}
+	}
+}
+void	solve2(char **grid, piece *head, int size, piece *start)
+{
+	head = start;
+	if (piecesplaced(start))
+	{
+		printgrid(grid);
+		ft_putchar('\n');
+	}
+	else
+	{
+		while (head)
+		{
+			if (!head->placed && placeable(grid, head))
+			{
+				grid = findideal(grid, head);
+				solve(grid, head, size, start);
+			}
+			else if (!placeable(grid, head) && !head->next)
+			{
+				resetpieces(start);
+				solve(grid, head , size+1, start);
+			}
+			head = head->next;
+		}
+	}
+}
+/*
+void	solve(char **grid, piece *head, int size, piece *start)
+{
 	piece	*ptr;
 
 	ptr = head;
-//	if (head == start && emptygrid(grid))
-//		solve(createmap(size+1), head, size+1, start);
+	head = start;
+	if (piecesplaced(start))
+		printgrid(grid);
+	else
+	{
+		while (head->placed)
+			head = head->next;
+		if (placeable(grid, head))
+		{
+			grid = findideal(grid, head);
+			printgrid(grid);
+			ft_putchar('\n');
+			solve(grid, ptr, size, start);
+		}
+		else
+		{
+			resetpieces(start);
+			solve(resetgrid(grid), ptr, size, start);
+		}
+	}
+}
+*/
+ /*
+void	solve(char **grid, piece *head, int size, piece *start)
+{
+	piece	*ptr;
+
+	ptr = head;
 	if (piecesplaced(head))
 		printgrid(grid);
 	else
@@ -161,8 +229,8 @@ void	solve(char **grid, piece *head, int size, piece *start)
 		if (ptr->placed == 0 && placeable(grid, ptr))
 		{
 			grid = findideal(grid, ptr);
-			printgrid(grid);
 			ft_putchar(ptr->letter);
+			printgrid(grid);
 			ft_putchar('\n');
 			solve(grid, head, size, start);
 		}
@@ -173,3 +241,24 @@ void	solve(char **grid, piece *head, int size, piece *start)
 		}
 	}
 }
+////////////////////\/\////\\\\/////\\///\\\\//\/\/\///\\
+while (placeable(head) && head)
+	{
+		grid = findideal(grid, head);
+		if (head->next)
+			head = head->next;
+		else if (piecesplaced(start) && !head->next)
+			printgrid(grid);
+		else
+		{
+			while (head->prev)
+			{
+				if (head->prev->placed)
+					head = head->prev;
+				else
+					findideal(grid, head);
+			}
+		}
+	}
+
+ */
