@@ -6,7 +6,7 @@
 /*   By: ckrommen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/04 19:04:53 by ckrommen          #+#    #+#             */
-/*   Updated: 2017/11/02 20:15:17 by ckrommen         ###   ########.fr       */
+/*   Updated: 2017/11/06 19:18:53 by ckrommen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef struct	piece
 	int				row[4];
 	int				col[4];
 	struct piece	*next;
+	struct piece	*prev;
 }				piece;
 
 char	*filetoarr(char *av);
@@ -43,6 +44,5 @@ void	printgrid(char **map);
 piece	*assignletter(piece *head);
 int	get_size(piece *lst);
 int	solve(int size, int row, char **grid, piece **begin_list);
-//void	freemap(char **grid)
 
 #endif
