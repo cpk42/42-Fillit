@@ -6,7 +6,7 @@
 /*   By: ckrommen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/04 19:04:53 by ckrommen          #+#    #+#             */
-/*   Updated: 2017/11/06 19:18:53 by ckrommen         ###   ########.fr       */
+/*   Updated: 2017/11/09 13:18:43 by ckrommen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <stdio.h>
 # include <string.h>
 # include <fcntl.h>
-# include "ckrommen/libft.h"
+# include "libft/libft.h"
 
 typedef struct	piece
 {
@@ -38,11 +38,12 @@ piece	**placepiece(piece *head, char **grid);
 void    pickuppiece(piece *head, char **grid);
 int		isempty(piece *head, char **grid);
 char	**createmap(int size);
-int		countpiece(piece **begin_list);
+int		countpiece(piece **start);
 int		tetchecker(char *grid);
 void	printgrid(char **map);
 piece	*assignletter(piece *head);
-int	get_size(piece *lst);
-int	solve(int size, int row, char **grid, piece **begin_list);
+int		get_size(piece *lst);
+int		solve(int size, int row, char **grid, piece **begin_list);
+int		find_sqrt(int n, int nb);
 
 #endif
