@@ -14,32 +14,31 @@
 
 int main(int argc, char **av)
 {
+  	int   size;
+	int   solved;
 	piece *new;
 	char *map;
 	char **grid;
-	
+
 	if (argc != 2)
 		ft_putstr("error\n");
 	else
 	{
-		new = newpiece();
-		map = filetoarr(av[1]);
-//		if (!tetchecker(map))
-//			ft_putstr("error\n");
-		grid = ft_strsplit(map, '\n');
-		free(map);
-		new = newpiece();
-		new = createpieces(grid, 0, 0, 0, new);
-		new = assignletter(new);
-		grid = createmap(6);
-		solve(grid, new, 6, new);
+	  solved = 0;
+	  map = filetoarr(av[1]);
+	  grid = ft_strsplit(map, '\n');
+	  free(map);
+	  new = newpiece();
+	  new = createpieces(grid, 0, 0, 0, new);
+	  new = assignletter(new);
+	  size = get_size(new);
+	  while (!solved)
+	    {
+	      grid = createmap(size);
+	      solved = solve(size, 0, grid, &new);
+	      if (!solved)
+		size++;
+	    }
+	  printgrid(grid);
 	}
 }
-	//translatepiece(grid, new->next, 0, 2);
-	//if (isempty(new->next, grid))
-	//placepiece(new->next, grid);
-	//pickuppiece(new->next, grid);
-	//for (int x = 0; x < 10; x++)
-	//printf("%s\n", grid[x]);
-	//if (isempty(new, grid))
-	//placepiece(new, grid);

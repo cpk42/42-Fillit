@@ -12,7 +12,22 @@
 
 #include "fillit.h"
 
-int	countpiece(char *arr)
+int	countpiece(piece **begin_list)
+{
+  piece	*lst;
+  int	i;
+
+  i = 0;
+  lst = *begin_list;
+  while (lst)
+    {
+      i++;
+      lst = lst->next;
+    }
+  return (i);
+}
+
+int	ft_countpiece(char *arr)
 {
 	int i;
 	int count;
@@ -27,3 +42,4 @@ int	countpiece(char *arr)
 	}
 	return (count /= 4);
 }
+

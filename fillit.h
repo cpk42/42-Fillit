@@ -33,16 +33,16 @@ piece	*newpiece();
 piece	*createpieces(char **grid, int row, int col, int i, piece *head);
 void	translate(piece *head, int row, int col);
 void	translatepiece(char **grid, piece *head, int row, int col, int size);
-char	**placepiece(piece *head, char **grid);
-char	**pickuppiece(piece *head, char **grid);
+piece	**placepiece(piece *head, char **grid);
+void    pickuppiece(piece *head, char **grid);
 int		isempty(piece *head, char **grid);
 char	**createmap(int size);
-int		countpiece(char *arr);
+int		countpiece(piece **begin_list);
 int		tetchecker(char *grid);
 void	printgrid(char **map);
-void	solve(char **grid, piece *head, int size, piece *start);
-char	**resetgrid(char **grid);
 piece	*assignletter(piece *head);
+int	get_size(piece *lst);
+int	solve(int size, int row, char **grid, piece **begin_list);
 //void	freemap(char **grid)
 
 #endif

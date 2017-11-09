@@ -12,7 +12,7 @@
 
 #include "fillit.h"
 
-char	**placepiece(piece *head, char **grid)
+piece	**placepiece(piece *head, char **grid)
 {
 	int i;
 
@@ -23,7 +23,7 @@ char	**placepiece(piece *head, char **grid)
 		i++;
 	}
 	head->placed = 1;
-	return (grid);
+	return (&head->next);
 }
 /*
 int main(int argc, char **av)

@@ -19,7 +19,6 @@ int	isempty(piece *head, char **grid)
 	i = 0;
 	while (i < 4)
 	{
-//		printf("ft_isalpha %d\n", ft_isalpha(grid[head->row[i]][head->col[i]]));
 		if (ft_isalpha(grid[head->row[i]][head->col[i]]))
 			return (0);
 		else if (grid[head->row[i]][head->col[i]] == '\0')

@@ -10,7 +10,7 @@
 #                                                                              #
 #******************************************************************************#
 
-SRCS = filetoarr.c newpiece.c createpieces.c translate.c translatepiece.c placepiece.c isempty.c pickuppiece.c createmap.c countpiece.c tetchecker.c printgrid.c main.c solve.c resetgrid.c assignletter.c
+SRCS = filetoarr.c piece.c translate.c translatepiece.c placepiece.c isempty.c pickuppiece.c createmap.c countpiece.c tetchecker.c printgrid.c main.c solve.c findsize.c
 
 FLAGS = -Wall -Wextra -Werror
 

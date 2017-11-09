@@ -12,7 +12,7 @@
 
 #include "fillit.h"
 
-char	**pickuppiece(piece *head, char **grid)
+void	pickuppiece(piece *head, char **grid)
 {
 	int i;
 
@@ -23,5 +23,4 @@ char	**pickuppiece(piece *head, char **grid)
 		i++;
 	}
 	head->placed = 0;
-	return (grid);
 }
