@@ -6,7 +6,7 @@
 /*   By: ckrommen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 13:16:22 by ckrommen          #+#    #+#             */
-/*   Updated: 2017/11/09 15:47:56 by ckrommen         ###   ########.fr       */
+/*   Updated: 2017/11/09 16:43:21 by quintonpo        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,11 @@
 int	find_sqrt(int n, int nb)
 {
 	if (n * n > nb)
-    {
 		return (0);
-    }
 	if (n * n == nb)
-    {
 		return (n);
-    }
 	else
-    {
 		return (find_sqrt(n + 1, nb));
-    }
 }
 
 int	get_size(piece *lst)
@@ -81,6 +75,8 @@ char	*filetoarr(char *av)
 	i = 0;
 	fd = open(av, O_RDONLY);
 	s = (char *)malloc(sizeof(char) * 2048);
+	if (fd == -1)
+		return (error("error"));
 	while (read(fd, &buf, 1))
 	{
 		s[i] = buf;
@@ -88,5 +84,7 @@ char	*filetoarr(char *av)
 	}
 	s[i] = '\0';
 	close(fd);
+	if (!tetchecker)
+		return (error("error"));
 	return (s);
 }

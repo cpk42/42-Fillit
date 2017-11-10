@@ -6,22 +6,12 @@
 /*   By: ckrommen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/24 16:46:39 by ckrommen          #+#    #+#             */
-/*   Updated: 2017/11/09 16:05:02 by quintonpo        ###   ########.fr       */
+/*   Updated: 2017/11/09 16:34:04 by quintonpo        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-
-int	tetchecker(char *grid)
-{
-	if (!linecount(grid))
-		return (0);
-	else if (!hashcount(grid))
-		return (0);
-	else if (!checkislands(grid))
-		return (0);
-	return (1);
-}
+#include <stdio.h>
 
 int linecount(char *grid)
 {
@@ -35,7 +25,7 @@ int linecount(char *grid)
 		if (*grid == '\n')
 			lc++;
 		if (*grid != '\n')
-			cc++
+			cc++;
 		grid++;
 	}
 	if (lc % 5 != 0 || cc / lc != 4)
@@ -71,9 +61,19 @@ int checkislands(char *grid)
 		if (grid[i] == '#')
 			if (grid[i + 1] != '#' && grid[i - 1] != '#' &&
 				grid[i + 5] != '#' && grid[i - 5] != '#')
-				return (0)
+				return (0);
 		i++;
 	}
 	return (1);
 }
 
+int	tetchecker(char *grid)
+{
+	if (!linecount(grid))
+		return (0);
+	else if (!hashcount(grid))
+		return (0);
+	else if (!checkislands(grid))
+		return (0);
+	return (1);
+}
