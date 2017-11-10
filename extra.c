@@ -1,34 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   charcount.c                                        :+:      :+:    :+:   */
+/*   extra.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ckrommen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/24 17:27:21 by ckrommen          #+#    #+#             */
-/*   Updated: 2017/10/24 17:35:30 by ckrommen         ###   ########.fr       */
+/*   Created: 2017/11/09 15:50:47 by ckrommen          #+#    #+#             */
+/*   Updated: 2017/11/09 16:04:30 by ckrommen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int	charcount(char **grid)
+void	*error(char *msg)
 {
-	int row;
-	int col;
-	int count;
+	ft_putendl(msg);
+	return (NULL);
+}
 
-	row = 0;
-	count = 0;
-	while (grid[row])
+piece	*buildpieces(char *map)
+{
+	char	**grid;
+	piece	*new;
+
+	grid = ft_strsplit(map, '\n');
+	free(map);
+	new = newpiece();
+	new = createpieces(grid, 0, 0, 0, new);
+	new = assignletter(new);
+	freegrid(grid);
+	return (new);
+}
+
+void	freegrid(char **grid)
+{
+	char *ptr;
+	int i;
+
+	i = 0;
+	while (grid[i])
 	{
-		col = 0;
-		while (grid[row][col])
-		{
-			count++;
-			col++;
-		}
-		row++;
+		ptr = grid[i];
+		free(ptr);
+		i++;
 	}
-	return (count);
 }

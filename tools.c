@@ -6,7 +6,7 @@
 /*   By: ckrommen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 13:16:22 by ckrommen          #+#    #+#             */
-/*   Updated: 2017/11/09 13:17:52 by ckrommen         ###   ########.fr       */
+/*   Updated: 2017/11/09 15:47:56 by ckrommen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,20 +71,22 @@ void	pickuppiece(piece *head, char **grid)
 	head->placed = 0;
 }
 
-int	isempty(piece *head, char **grid)
+char	*filetoarr(char *av)
 {
-	int i;
+	char	*s;
+	int		i;
+	int		fd;
+	char	buf;
 
 	i = 0;
-	while (i < 4)
+	fd = open(av, O_RDONLY);
+	s = (char *)malloc(sizeof(char) * 2048);
+	while (read(fd, &buf, 1))
 	{
-		if (ft_isalpha(grid[head->row[i]][head->col[i]]))
-			return (0);
-		else if (grid[head->row[i]][head->col[i]] == '\0')
-			return (0);
-		else if (i == 3)
-			return (1);
+		s[i] = buf;
 		i++;
 	}
-	return (0);
+	s[i] = '\0';
+	close(fd);
+	return (s);
 }
