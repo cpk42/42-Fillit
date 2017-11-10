@@ -6,12 +6,10 @@
 /*   By: ckrommen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/24 16:46:39 by ckrommen          #+#    #+#             */
-/*   Updated: 2017/11/09 16:34:04 by quintonpo        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-#include <stdio.h>
 
 int linecount(char *grid)
 {

@@ -6,7 +6,6 @@
 /*   By: ckrommen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 13:16:22 by ckrommen          #+#    #+#             */
-/*   Updated: 2017/11/09 16:43:21 by quintonpo        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +73,8 @@ char	*filetoarr(char *av)
 
 	i = 0;
 	fd = open(av, O_RDONLY);
+	if (fd == -1)
+		return ("error");
 	s = (char *)malloc(sizeof(char) * 2048);
 	if (fd == -1)
 		return (error("error"));
@@ -84,7 +85,5 @@ char	*filetoarr(char *av)
 	}
 	s[i] = '\0';
 	close(fd);
-	if (!tetchecker)
-		return (error("error"));
 	return (s);
 }

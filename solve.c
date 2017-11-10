@@ -6,7 +6,7 @@
 /*   By: ckrommen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/25 21:38:41 by ckrommen          #+#    #+#             */
-/*   Updated: 2017/11/09 13:08:08 by ckrommen         ###   ########.fr       */
+/*   Updated: 2017/11/09 16:50:00 by ckrommen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,10 @@ int	solve(int size, int row,  char **grid, piece **start)
 	head = *start;
 	if (!head)
 		return (1);
-	while (grid[row])
+	while (row < size)
     {
 		col = 0;
-		while (grid[row][col])
+		while (col < size)
 		{
 			found = placeable(grid, head, row, col);
 			if (found)

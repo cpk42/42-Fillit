@@ -6,7 +6,7 @@
 /*   By: ckrommen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/04 19:04:53 by ckrommen          #+#    #+#             */
-/*   Updated: 2017/11/09 16:21:26 by ckrommen         ###   ########.fr       */
+/*   Updated: 2017/11/09 17:06:46 by ckrommen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,7 @@ int		solve(int size, int row, char **grid, piece **begin_list);
 int		find_sqrt(int n, int nb);
 void	*error(char *msg);
 piece	*buildpieces(char *map);
-void	freegrid(char **grid);
+void	freegrid(char **grid, int size);
+int		tetchecker(char *grid);
+
 #endif
