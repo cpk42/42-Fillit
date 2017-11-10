@@ -6,7 +6,7 @@
 /*   By: ckrommen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 15:50:47 by ckrommen          #+#    #+#             */
-/*   Updated: 2017/11/09 16:04:30 by ckrommen         ###   ########.fr       */
+/*   Updated: 2017/11/09 17:02:07 by ckrommen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,20 +28,18 @@ piece	*buildpieces(char *map)
 	new = newpiece();
 	new = createpieces(grid, 0, 0, 0, new);
 	new = assignletter(new);
-	freegrid(grid);
+	freegrid(grid, ft_strlen(*grid));
 	return (new);
 }
 
-void	freegrid(char **grid)
+void	freegrid(char **grid, int size)
 {
-	char *ptr;
 	int i;
 
 	i = 0;
-	while (grid[i])
+	while (i < size)
 	{
-		ptr = grid[i];
-		free(ptr);
+		free(grid[i]);
 		i++;
 	}
 }

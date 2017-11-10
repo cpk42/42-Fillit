@@ -6,7 +6,7 @@
 /*   By: ckrommen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/25 20:55:38 by ckrommen          #+#    #+#             */
-/*   Updated: 2017/11/09 16:24:52 by ckrommen         ###   ########.fr       */
+/*   Updated: 2017/11/09 17:05:36 by ckrommen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,13 @@ int main(int argc, char **av)
 	char **grid;
 	
 	if (argc != 2)
-		return (int)error("usage: ./fillit target_file");
+		return ((int)error("usage: ./fillit target_file"));
 	else
 	{
 		solved = 0;
 		map = filetoarr(av[1]);
+		if (!ft_strcmp(map, "error"))
+			return ((int)error("error"));
 		new = buildpieces(map);
 		size = get_size(new);
 		while (!solved)
@@ -35,7 +37,7 @@ int main(int argc, char **av)
 			if (!solved)
 				size++;
 	    }
-//		printgrid(grid, size);
-//		freegrid(grid);
+		printgrid(grid, size);
+		freegrid(grid, size);
 	}
 }
