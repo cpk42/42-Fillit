@@ -6,17 +6,17 @@
 /*   By: ckrommen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 13:13:16 by ckrommen          #+#    #+#             */
-/*   Updated: 2017/11/09 13:13:46 by ckrommen         ###   ########.fr       */
+/*   Updated: 2017/11/10 19:50:38 by ckrommen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-piece	*newpiece()
+t_piece	*newpiece()
 {
-	piece	*new;
+	t_piece	*new;
 	
-	if (!(new = malloc(sizeof(piece))))
+	if (!(new = malloc(sizeof(t_piece))))
 		return (NULL);
 	new->letter = 'A';
 	new->placed = 0;
@@ -27,11 +27,11 @@ piece	*newpiece()
 }
 
 
-piece	*dellast(piece *head)
+t_piece	*dellast(t_piece *head)
 {
-	piece *last;
-	piece *seclast;
-	
+	t_piece *last;
+	t_piece *seclast;
+
 	last = head;
 	while (last->next)
     {
@@ -43,9 +43,9 @@ piece	*dellast(piece *head)
 	return (head);
 }
 
-piece	*createpieces(char **grid, int row, int col, int i, piece *head)
+t_piece	*createpieces(char **grid, int row, int col, int i, t_piece *head)
 {
-	piece	*ptr;
+	t_piece	*ptr;
 	
 	ptr = head;
 	while (grid[row])
@@ -72,10 +72,10 @@ piece	*createpieces(char **grid, int row, int col, int i, piece *head)
 	return (dellast(ptr));
 }
 
-piece	*assignletter(piece *head)
+t_piece	*assignletter(t_piece *head)
 {
 	char	letter;
-	piece	*ptr;
+	t_piece	*ptr;
 	
 	ptr = head;
 	letter = 'A';
@@ -88,9 +88,9 @@ piece	*assignletter(piece *head)
 	return (ptr);
 }
 
-int	countpiece(piece **start)
+int		countpiece(t_piece **start)
 {
-	piece	*head;
+	t_piece	*head;
 	int		i;
 	
 	i = 0;

@@ -6,7 +6,7 @@
 /*   By: ckrommen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 15:50:47 by ckrommen          #+#    #+#             */
-/*   Updated: 2017/11/10 14:30:31 by ckrommen         ###   ########.fr       */
+/*   Updated: 2017/11/10 19:40:59 by ckrommen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ void	*error(char *msg)
 	return (NULL);
 }
 
-piece	*buildpieces(char *map)
+t_piece	*buildpieces(char *map)
 {
 	char	**grid;
-	piece	*new;
+	t_piece	*new;
 
 	grid = ft_strsplit(map, '\n');
 	free(map);

@@ -6,7 +6,7 @@
 /*   By: ckrommen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 13:16:22 by ckrommen          #+#    #+#             */
-/*   Updated: 2017/11/10 14:26:09 by ckrommen         ###   ########.fr       */
+/*   Updated: 2017/11/10 20:01:27 by ckrommen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,14 @@
 int	find_sqrt(int n, int nb)
 {
 	if (n * n > nb)
-    {
 		return (0);
-    }
 	if (n * n == nb)
-    {
 		return (n);
-    }
 	else
-    {
 		return (find_sqrt(n + 1, nb));
-    }
 }
 
-int	get_size(piece *new)
+int	get_size(t_piece *new)
 {
 	unsigned int size;
 	unsigned int i;
@@ -44,7 +38,7 @@ int	get_size(piece *new)
 	return (i);
 }
 
-piece	**placepiece(piece *head, char **grid)
+t_piece	**placepiece(t_piece *head, char **grid)
 {
 	int i;
 
@@ -58,7 +52,7 @@ piece	**placepiece(piece *head, char **grid)
 	return (&head->next);
 }
 
-void	pickuppiece(piece *head, char **grid)
+void	pickuppiece(t_piece *head, char **grid)
 {
 	int i;
 
@@ -82,15 +76,16 @@ char	*filetoarr(char *av)
 	fd = open(av, O_RDONLY);
 	if (fd == -1)
 		return ("error");
-	s = (char *)malloc(sizeof(char) * 2048);
+	s = (char *)malloc(sizeof(char) * 547);
 	while (read(fd, &buf, 1))
 	{
 		s[i] = buf;
 		i++;
+		if (i >= 547)
+			return ("error");
 	}
-	s[i] = '\0';
+	if (!tetchecker(s))
+		return ("error");
 	close(fd);
-	if (tetchecker(s))
-		return("error");
 	return (s);
 }

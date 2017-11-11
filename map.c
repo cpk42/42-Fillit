@@ -6,7 +6,7 @@
 /*   By: ckrommen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 13:13:51 by ckrommen          #+#    #+#             */
-/*   Updated: 2017/11/09 17:03:12 by ckrommen         ###   ########.fr       */
+/*   Updated: 2017/11/10 19:40:09 by ckrommen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	printgrid(char **grid, int size)
 	}
 }
 
-int	isempty(piece *head, char **grid)
+int	isempty(t_piece *head, char **grid)
 {
 	int i;
 	
@@ -72,7 +72,7 @@ int	isempty(piece *head, char **grid)
 	return (0);
 }
 
-void	translate(piece *head, int row, int col)
+void	translate(t_piece *head, int row, int col)
 {
 	int x;
 	int y;
@@ -99,7 +99,7 @@ void	translate(piece *head, int row, int col)
 	}
 }
 
-void	translatepiece(char **grid, piece *head, int row, int col, int size)
+void	translatepiece(char **grid, t_piece *head, int row, int col, int size)
 {
 	size_t	i;
 
@@ -109,7 +109,7 @@ void	translatepiece(char **grid, piece *head, int row, int col, int size)
 	{
 		if (head->col[i] < 0)
 			translatepiece(grid, head, row, col+1, size);
-		else if (head->row[i] == size)
+		else if (head->row[i] >= size)
 			translatepiece(grid, head, row-1, col, size);
 		else if (grid[head->row[i]][head->col[i]] == '\0')
 			translatepiece(grid, head, row, col-1, size);

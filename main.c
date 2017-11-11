@@ -6,7 +6,7 @@
 /*   By: ckrommen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/25 20:55:38 by ckrommen          #+#    #+#             */
-/*   Updated: 2017/11/10 14:32:32 by ckrommen         ###   ########.fr       */
+/*   Updated: 2017/11/10 19:57:57 by ckrommen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int main(int argc, char **av)
 {
   	int   size;
 	int   solved;
-	piece *new;
+	t_piece *new;
 	char *map;
 	char **grid;
 	
@@ -34,7 +34,8 @@ int main(int argc, char **av)
 	    {
 			grid = createmap(size);
 			solved = solve(size, 0, grid, &new);
-			size = !solved ? size++ : size;
+			if (!solved)
+				size++;
 	    }
 		printgrid(grid, size);
 		freegrid(grid, size);

@@ -6,13 +6,13 @@
 /*   By: ckrommen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/25 21:38:41 by ckrommen          #+#    #+#             */
-/*   Updated: 2017/11/09 16:50:00 by ckrommen         ###   ########.fr       */
+/*   Updated: 2017/11/10 19:37:23 by ckrommen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int	placeable(char **grid, piece *head, int row ,int col)
+int	placeable(char **grid, t_piece *head, int row ,int col)
 {
 	translatepiece(grid, head, row, col, ft_strlen(grid[row]));
 	if (isempty(head, grid))
@@ -20,9 +20,9 @@ int	placeable(char **grid, piece *head, int row ,int col)
 	return (0);
 }
 
-int	solve(int size, int row,  char **grid, piece **start)
+int	solve(int size, int row,  char **grid, t_piece **start)
 {
-	piece	*head;
+	t_piece	*head;
 	int   found;
 	int   col;
 	
