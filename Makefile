@@ -6,14 +6,14 @@
 #    By: ckrommen <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/10/05 13:16:08 by ckrommen          #+#    #+#              #
-#    Updated: 2017/11/10 18:36:47 by ckrommen         ###   ########.fr        #
+#    Updated: 2017/11/11 13:45:26 by ckrommen         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
 
 SRCS = piece.c main.c solve.c map.c tools.c extra.c tetchecker.c
 
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror -g
 
 NAME = fillit
 
@@ -29,7 +29,6 @@ all: $(NAME)
 
 clean:
 	@$(MAKE) clean -C $(LIBFT)
-	@rm -rf $(NAME)
 
 fclean: clean
 	@rm -f $(NAME)

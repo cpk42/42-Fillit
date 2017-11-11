@@ -6,13 +6,13 @@
 /*   By: quintonponcelet <marvin@42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/10 14:25:52 by quintonpo         #+#    #+#             */
-/*   Updated: 2017/11/10 19:26:33 by ckrommen         ###   ########.fr       */
+/*   Updated: 2017/11/11 14:29:28 by ckrommen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int linecount(char *grid)
+int	linecount(char *grid)
 {
 	int lc;
 	int i;
@@ -35,7 +35,7 @@ int linecount(char *grid)
 	return (1);
 }
 
-int hashcount(char *grid)
+int	hashcount(char *grid)
 {
 	int hc;
 
@@ -53,7 +53,7 @@ int hashcount(char *grid)
 	return (1);
 }
 
-int checkislands(char *grid)
+int	checkislands(char *grid)
 {
 	int i;
 
@@ -84,7 +84,7 @@ int	tetchecker(char *grid)
 		return (0);
 	else if (!hashcount(grid))
 		return (0);
-//	else if (!checkislands(grid))
-//		return (0);
+	else if (!checkislands(grid))
+		return (0);
 	return (1);
 }

@@ -6,13 +6,13 @@
 /*   By: ckrommen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 13:16:22 by ckrommen          #+#    #+#             */
-/*   Updated: 2017/11/10 20:01:27 by ckrommen         ###   ########.fr       */
+/*   Updated: 2017/11/11 13:35:52 by ckrommen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int	find_sqrt(int n, int nb)
+int		find_sqrt(int n, int nb)
 {
 	if (n * n > nb)
 		return (0);
@@ -22,7 +22,7 @@ int	find_sqrt(int n, int nb)
 		return (find_sqrt(n + 1, nb));
 }
 
-int	get_size(t_piece *new)
+int		get_size(t_piece *new)
 {
 	unsigned int size;
 	unsigned int i;
@@ -31,10 +31,10 @@ int	get_size(t_piece *new)
 	size *= 4;
 	i = 0;
 	while (!i)
-    {
+	{
 		i = find_sqrt(1, size);
 		size++;
-    }
+	}
 	return (i);
 }
 
@@ -48,7 +48,6 @@ t_piece	**placepiece(t_piece *head, char **grid)
 		grid[head->row[i]][head->col[i]] = head->letter;
 		i++;
 	}
-	head->placed = 1;
 	return (&head->next);
 }
 
@@ -62,7 +61,6 @@ void	pickuppiece(t_piece *head, char **grid)
 		grid[head->row[i]][head->col[i]] = '.';
 		i++;
 	}
-	head->placed = 0;
 }
 
 char	*filetoarr(char *av)

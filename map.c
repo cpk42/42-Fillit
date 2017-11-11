@@ -6,7 +6,7 @@
 /*   By: ckrommen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 13:13:51 by ckrommen          #+#    #+#             */
-/*   Updated: 2017/11/10 19:40:09 by ckrommen         ###   ########.fr       */
+/*   Updated: 2017/11/11 14:16:11 by ckrommen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char	**createmap(int size)
 	char	**grid;
 	int		row;
 	int		col;
-	
+
 	row = 0;
 	col = 0;
 	grid = (char **)malloc(sizeof(char *) * (size + 1));
@@ -39,7 +39,7 @@ void	printgrid(char **grid, int size)
 {
 	int row;
 	int col;
-	
+
 	row = 0;
 	while (row < size)
 	{
@@ -54,10 +54,10 @@ void	printgrid(char **grid, int size)
 	}
 }
 
-int	isempty(t_piece *head, char **grid)
+int		isempty(t_piece *head, char **grid)
 {
 	int i;
-	
+
 	i = 0;
 	while (i < 4)
 	{
@@ -99,9 +99,9 @@ void	translate(t_piece *head, int row, int col)
 	}
 }
 
-void	translatepiece(char **grid, t_piece *head, int row, int col, int size)
+void translatepiece(char **grid, t_piece *head, int row, int col, int size)
 {
-	size_t	i;
+	size_t i;
 
 	i = 0;
 	translate(head, row, col);
@@ -116,3 +116,35 @@ void	translatepiece(char **grid, t_piece *head, int row, int col, int size)
 		i++;
 	}
 }
+
+/*
+void	translatepiece(char **grid, t_piece *head, int row, int col, int size)
+{
+	size_t	i;
+//	int		size;
+
+//	size = (int)ft_strlen(grid[0]);
+//	printf("size %d\n", size);
+	i = 0;
+	translate(head, row, col);
+	while (i < 4)
+	{
+		if (head->col[i] < 0)
+		{
+			printf("col %d \n", head->col[i]);
+			translatepiece(grid, head, row, col + 1, size);
+		}
+		else if (head->row[i] >= size)
+		{
+			printf("row %d \n", head->row[i]);
+			translatepiece(grid, head, row - 1, col, size);
+		}
+		else if (grid[head->row[i]][head->col[i]] == '\0')
+		{
+			printf("row %d col %d \n", head->row[i], head->col[i]);
+			translatepiece(grid, head, row, col - 1, size);
+		}
+		i++;
+	}
+}
+*/

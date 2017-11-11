@@ -6,26 +6,24 @@
 /*   By: ckrommen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 13:13:16 by ckrommen          #+#    #+#             */
-/*   Updated: 2017/11/10 19:50:38 by ckrommen         ###   ########.fr       */
+/*   Updated: 2017/11/11 12:58:53 by ckrommen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-t_piece	*newpiece()
+t_piece	*newpiece(void)
 {
 	t_piece	*new;
-	
+
 	if (!(new = malloc(sizeof(t_piece))))
 		return (NULL);
 	new->letter = 'A';
-	new->placed = 0;
 	ft_bzero(new->row, 4);
 	ft_bzero(new->col, 4);
 	new->next = NULL;
 	return (new);
 }
-
 
 t_piece	*dellast(t_piece *head)
 {
@@ -34,22 +32,23 @@ t_piece	*dellast(t_piece *head)
 
 	last = head;
 	while (last->next)
-    {
+	{
 		seclast = last;
 		last = last->next;
-    }
+	}
 	seclast->next = NULL;
 	free(last);
 	return (head);
 }
 
-t_piece	*createpieces(char **grid, int row, int col, int i, t_piece *head)
+t_piece	*createpieces(char **grid, int row, int i, t_piece *head)
 {
 	t_piece	*ptr;
-	
+	int		col;
+
 	ptr = head;
 	while (grid[row])
-    {
+	{
 		col = 0;
 		while (grid[row][col])
 		{
@@ -57,8 +56,7 @@ t_piece	*createpieces(char **grid, int row, int col, int i, t_piece *head)
 			{
 				head->row[i] = row;
 				head->col[i] = col;
-				i++;
-				if (i == 4)
+				if (++i == 4)
 				{
 					head->next = newpiece();
 					head = head->next;
@@ -68,7 +66,7 @@ t_piece	*createpieces(char **grid, int row, int col, int i, t_piece *head)
 			col++;
 		}
 		row++;
-    }
+	}
 	return (dellast(ptr));
 }
 
@@ -76,7 +74,7 @@ t_piece	*assignletter(t_piece *head)
 {
 	char	letter;
 	t_piece	*ptr;
-	
+
 	ptr = head;
 	letter = 'A';
 	while (head)
@@ -84,7 +82,7 @@ t_piece	*assignletter(t_piece *head)
 		head->letter = letter;
 		letter++;
 		head = head->next;
-    }
+	}
 	return (ptr);
 }
 
@@ -92,13 +90,13 @@ int		countpiece(t_piece **start)
 {
 	t_piece	*head;
 	int		i;
-	
+
 	i = 0;
 	head = *start;
 	while (head)
-    {
+	{
 		i++;
 		head = head->next;
-    }
+	}
 	return (i);
 }

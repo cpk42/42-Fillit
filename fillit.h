@@ -6,7 +6,7 @@
 /*   By: ckrommen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/04 19:04:53 by ckrommen          #+#    #+#             */
-/*   Updated: 2017/11/10 19:51:56 by ckrommen         ###   ########.fr       */
+/*   Updated: 2017/11/11 13:40:16 by ckrommen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@
 typedef struct	s_piece
 {
 	char			letter;
-	int				placed;
 	int				row[4];
 	int				col[4];
 	struct s_piece	*next;
@@ -31,11 +30,9 @@ typedef struct	s_piece
 
 char			*filetoarr(char *av);
 t_piece			*newpiece();
-t_piece			*createpieces(char **grid, int row, int col,
-							int i, t_piece *head);
+t_piece			*createpieces(char **grid, int row, int i, t_piece *head);
 void			translate(t_piece *head, int row, int col);
-void			translatepiece(char **grid, t_piece *head, int row,
-							int col, int size);
+void			translatepiece(char **grid, t_piece *head, int row, int col, int size);
 t_piece			**placepiece(t_piece *head, char **grid);
 void			pickuppiece(t_piece *head, char **grid);
 int				isempty(t_piece *head, char **grid);
