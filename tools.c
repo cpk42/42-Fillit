@@ -83,6 +83,8 @@ char	*filetoarr(char *av)
 		s[i] = buf;
 		i++;
 	}
+	if (!tetchecker(s))
+		return ("error");
 	s[i] = '\0';
 	close(fd);
 	return (s);
