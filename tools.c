@@ -6,7 +6,7 @@
 /*   By: ckrommen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 13:16:22 by ckrommen          #+#    #+#             */
-/*   Updated: 2017/11/09 17:06:26 by ckrommen         ###   ########.fr       */
+/*   Updated: 2017/11/10 14:26:09 by ckrommen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,12 @@ int	find_sqrt(int n, int nb)
     }
 }
 
-int	get_size(piece *lst)
+int	get_size(piece *new)
 {
 	unsigned int size;
 	unsigned int i;
 
-	size = countpiece(&lst);
+	size = countpiece(&new);
 	size *= 4;
 	i = 0;
 	while (!i)
@@ -90,7 +90,7 @@ char	*filetoarr(char *av)
 	}
 	s[i] = '\0';
 	close(fd);
-	if (!tetchecker(s))
+	if (tetchecker(s))
 		return("error");
 	return (s);
 }
