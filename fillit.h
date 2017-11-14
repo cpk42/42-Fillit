@@ -6,7 +6,7 @@
 /*   By: ckrommen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/04 19:04:53 by ckrommen          #+#    #+#             */
-/*   Updated: 2017/11/11 13:40:16 by ckrommen         ###   ########.fr       */
+/*   Updated: 2017/11/13 17:14:43 by ckrommen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,11 @@
 typedef struct	s_piece
 {
 	char			letter;
+	int				h;
+	int				w;
 	int				row[4];
 	int				col[4];
 	struct s_piece	*next;
-	struct s_piece	*prev;
 }				t_piece;
 
 char			*filetoarr(char *av);
@@ -48,5 +49,7 @@ void			*error(char *msg);
 t_piece			*buildpieces(char *map);
 void			freegrid(char **grid, int size);
 int				tetchecker(char *grid);
+int				findgreates(int *arr);
+void			assignmax(t_piece *head);
 
 #endif

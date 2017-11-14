@@ -6,7 +6,7 @@
 /*   By: ckrommen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 15:50:47 by ckrommen          #+#    #+#             */
-/*   Updated: 2017/11/11 12:56:19 by ckrommen         ###   ########.fr       */
+/*   Updated: 2017/11/13 17:15:30 by ckrommen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,4 +42,26 @@ void	freegrid(char **grid, int size)
 		free(grid[i]);
 		i++;
 	}
+}
+
+int		find_greatest(int *arr)
+{
+	int i;
+	int num;
+
+	i = 0;
+	num = 0;
+	while (i < 4)
+	{
+		if (arr[i] > num)
+			num = arr[i];
+		i++;
+	}
+	return (num);
+}
+
+void	assignmax(t_piece *head)
+{
+	head->h = find_greatest(head->row);
+	head->w = find_greatest(head->col);
 }

@@ -6,7 +6,7 @@
 /*   By: ckrommen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 13:13:16 by ckrommen          #+#    #+#             */
-/*   Updated: 2017/11/11 12:58:53 by ckrommen         ###   ########.fr       */
+/*   Updated: 2017/11/13 17:19:23 by ckrommen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ t_piece	*newpiece(void)
 	if (!(new = malloc(sizeof(t_piece))))
 		return (NULL);
 	new->letter = 'A';
+	new->h = 0;
+	new->w = 0;
 	ft_bzero(new->row, 4);
 	ft_bzero(new->col, 4);
 	new->next = NULL;
@@ -81,6 +83,7 @@ t_piece	*assignletter(t_piece *head)
 	{
 		head->letter = letter;
 		letter++;
+		translate(head, 0, 0);
 		head = head->next;
 	}
 	return (ptr);
