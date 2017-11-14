@@ -54,22 +54,19 @@ void	printgrid(char **grid, int size)
 	}
 }
 
-int		isempty(t_piece *head, char **grid)
+int		isempty(t_piece **head)
 {
-	int i;
+  t_piece *ptr;
 
-	i = 0;
-	while (i < 4)
-	{
-		if (ft_isalpha(grid[head->row[i]][head->col[i]]))
-			return (0);
-		else if (grid[head->row[i]][head->col[i]] == '\0')
-			return (0);
-		else if (i == 3)
-			return (1);
-		i++;
-	}
+  ptr = *head;
+  while (ptr)
+    {
+      if (ptr->placed)
+	ptr = ptr->next;
+      else
 	return (0);
+    }
+  return (1);
 }
 
 void	translate(t_piece *head, int row, int col)

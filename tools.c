@@ -40,14 +40,15 @@ int		get_size(t_piece *new)
 
 t_piece	**placepiece(t_piece *head, char **grid)
 {
-	int i;
+	int	i;
 
-	i = 0;
+	i = 0;	
 	while (i < 4)
 	{
 		grid[head->row[i]][head->col[i]] = head->letter;
 		i++;
 	}
+	head->placed = 1;
 	return (&head->next);
 }
 
@@ -61,6 +62,7 @@ void	pickuppiece(t_piece *head, char **grid)
 		grid[head->row[i]][head->col[i]] = '.';
 		i++;
 	}
+	head->placed = 0;
 }
 
 char	*filetoarr(char *av)

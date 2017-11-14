@@ -21,6 +21,7 @@ t_piece	*newpiece(void)
 	new->letter = 'A';
 	new->h = 0;
 	new->w = 0;
+	new->placed = 0;
 	ft_bzero(new->row, 4);
 	ft_bzero(new->col, 4);
 	new->next = NULL;
@@ -83,7 +84,6 @@ t_piece	*assignletter(t_piece *head)
 	{
 		head->letter = letter;
 		letter++;
-		translate(head, 0, 0);
 		head = head->next;
 	}
 	return (ptr);

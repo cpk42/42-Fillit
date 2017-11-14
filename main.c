@@ -29,14 +29,14 @@ int	main(int argc, char **av)
 		if (!ft_strcmp(map, "error"))
 			return ((int)error("error"));
 		new = buildpieces(map);
-		size = get_size(new);
+		size = 2;
 		while (!solved)
-		{
-			grid = createmap(size);
-			solved = solve(size, 0, grid, &new);
-			size = !solved ? size + 1 : size;
-		}
-		printgrid(grid, size);
+		 {
+		    grid = createmap(size);
+		    solved = fillit(size, 0, grid, &new);
+		    size = !solved ? size + 1 : size;
+		 }
+       		printgrid(grid, size);
 		freegrid(grid, size);
 	}
 }

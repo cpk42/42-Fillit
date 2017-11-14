@@ -24,6 +24,7 @@ typedef struct	s_piece
 	char			letter;
 	int				h;
 	int				w;
+  	int				placed;
 	int				row[4];
 	int				col[4];
 	struct s_piece	*next;
@@ -36,7 +37,7 @@ void			translate(t_piece *head, int row, int col);
 void			translatepiece(char **grid, t_piece *head, int row, int col, int size);
 t_piece			**placepiece(t_piece *head, char **grid);
 void			pickuppiece(t_piece *head, char **grid);
-int				isempty(t_piece *head, char **grid);
+int				isempty(t_piece **head);
 char			**createmap(int size);
 int				countpiece(t_piece **start);
 int				tetchecker(char *grid);
@@ -49,7 +50,7 @@ void			*error(char *msg);
 t_piece			*buildpieces(char *map);
 void			freegrid(char **grid, int size);
 int				tetchecker(char *grid);
-int				findgreates(int *arr);
-void			assignmax(t_piece *head);
+int				findgreatest(int *arr);
+t_piece			*assignmax(t_piece *head);
 
 #endif

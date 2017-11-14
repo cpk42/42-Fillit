@@ -28,6 +28,7 @@ t_piece	*buildpieces(char *map)
 	new = newpiece();
 	new = createpieces(grid, 0, 0, new);
 	new = assignletter(new);
+	new = assignmax(new);
 	freegrid(grid, ft_strlen(*grid));
 	return (new);
 }
@@ -60,8 +61,17 @@ int		find_greatest(int *arr)
 	return (num);
 }
 
-void	assignmax(t_piece *head)
+t_piece *assignmax(t_piece *head)
 {
-	head->h = find_greatest(head->row);
-	head->w = find_greatest(head->col);
+	t_piece *ptr;
+
+	ptr = head;
+	while (head)
+	  {
+	    translate(head, 0, 0);
+	    head->h = find_greatest(head->row);
+	    head->w = find_greatest(head->col);
+	    head = head->next;
+	  }
+	return (ptr);
 }

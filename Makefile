@@ -11,7 +11,7 @@
 #******************************************************************************#
 
 
-SRCS = piece.c main.c solve.c map.c tools.c extra.c tetchecker.c
+SRCS = piece.c main.c fillit.c map.c tools.c extra.c tetchecker.c
 
 FLAGS = -Wall -Wextra -Werror -g
 

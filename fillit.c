@@ -1,7 +1,8 @@
+
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   solve.c                                            :+:      :+:    :+:   */
+/*   fillit.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ckrommen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,34 +13,41 @@
 
 #include "fillit.h"
 
-int	placeable(char **grid, t_piece *head, int row, int col, int size)
+int	placeable(char **grid, t_piece *head, int row, int col)
 {
-	translatepiece(grid, head, row, col, size);
-	if (isempty(head, grid))
-		return (1);
+  int i;
+
+  i = 0;
+  translate(head, row, col);
+  while (i < 4)
+    {
+      if (grid[head->row[i]][head->col[i]] != '.')
 	return (0);
+      i++;
+    }
+  return (1);
 }
 
-int	solve(int size, int row, char **grid, t_piece **start)
+int	fillit(int size, int row, char **grid, t_piece **start)
 {
 	t_piece	*head;
 	int		found;
 	int		col;
 
 	head = *start;
-	if (!head)
+	if (isempty(start))
 		return (1);
-	while (row < size)
+	while (row < size - head->h)
 	{
 		col = 0;
-		while (col < size)
+		while (col < size - head->w)
 		{
-			found = placeable(grid, head, row, col, size);
+		  found = placeable(grid, head, row, col);
 			if (found)
 			{
-				if (solve(size, 0, grid, placepiece(head, grid)))
-					return (1);
-				pickuppiece(head, grid);
+			  if (fillit(size, 0, grid, placepiece(head, grid)))
+				    return (1);
+			    pickuppiece(head, grid);
 			}
 			col++;
 		}
