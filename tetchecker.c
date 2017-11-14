@@ -6,13 +6,13 @@
 /*   By: quintonponcelet <marvin@42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/10 14:25:52 by quintonpo         #+#    #+#             */
-/*   Updated: 2017/11/11 14:29:28 by ckrommen         ###   ########.fr       */
+/*   Updated: 2017/11/13 15:18:11 by quintonpo        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int	linecount(char *grid)
+int linecount(char *grid)
 {
 	int lc;
 	int i;
@@ -21,6 +21,8 @@ int	linecount(char *grid)
 	i = 0;
 	while (grid[i])
 	{
+		if (grid[i] == '\n' && grid[i + 1] == '\n' && grid[i + 2] == '\n')
+			return (0);
 		if (grid[i] == '\n')
 			lc++;
 		if (grid[i] == '\n' && grid[i + 1] == '\n')
@@ -35,7 +37,7 @@ int	linecount(char *grid)
 	return (1);
 }
 
-int	hashcount(char *grid)
+int hashcount(char *grid)
 {
 	int hc;
 
@@ -53,30 +55,57 @@ int	hashcount(char *grid)
 	return (1);
 }
 
-int	checkislands(char *grid)
+int ishash(char c)
+{
+	if (c == '#')
+		return (1);
+	return (0);
+}
+
+int checkislands(char *grid)
 {
 	int i;
+	int c;
 
 	i = 0;
+	c = 5;
 	while (grid[i])
 	{
-		if (grid[i] == '#')
-			if (grid[i + 1] != '#' && grid[i - 1] != '#' &&
-				grid[i + 5] != '#' && grid[i - 5] != '#')
+		/*while (grid[i + c] == '\0' && grid[i])
+		{
+			if (grid[i] == '#')
+				if (grid[i + 1] != '#' && grid[i - 1] != '#' &&
+					grid[i - 5] != '#')
+					return (0);
+			c--;
+			i++;
+		}*/
+		if (ishash(grid[i]))
+			if (!ishash(grid[i + 1]) && !ishash(grid[i + 5]) &&
+				!ishash(grid[i - 1]) && !ishash(grid[i - 5]))
 				return (0);
 		i++;
 	}
 	return (1);
 }
 
-/*int charcount(char *grid)
+int charcount(char *grid)
 {
 	int i;
+	int cc;
 
 	i = 0;
+	cc = 0;
 	while (grid[i])
 	{
-*/
+		while (grid[i] != '\n')
+			cc++;
+		if (cc != 4)
+			return (0);
+		i++;
+	}
+	return (1);
+}
 
 int	tetchecker(char *grid)
 {
