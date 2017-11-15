@@ -6,7 +6,7 @@
 /*   By: quintonponcelet <marvin@42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/10 14:25:52 by quintonpo         #+#    #+#             */
-/*   Updated: 2017/11/14 18:51:51 by ckrommen         ###   ########.fr       */
+/*   Updated: 2017/11/14 20:12:32 by quintonpo        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,35 @@ int		checkislands(char *grid)
 	int c;
 
 	i = 0;
+	c = 0;
+	while (grid[i])
+	{
+		if (ishash(grid[i]))
+		{
+			if (ishash(grid[i + 1]))
+				c++;
+			if (ishash(grid[i + 5]))
+				c++;
+		}
+		if (grid[i] == '\n' && grid[i + 1] == '\n')
+		{
+			if (c < 3)
+				return (0);
+			c = 0;
+		}
+		i++;
+	}
+	if (c < 3)
+		return (0);
+	return (1);
+}
+
+/*int		checkislands(char *grid)
+{
+	int i;
+	int c;
+
+	i = 0;
 	c = 5;
 	while (grid[i])
 	{
@@ -101,29 +130,35 @@ int		charcount(char *grid)
 		i++;
 	}
 	return (1);
+}*/
+
+int		charcount(char *grid)
+{
+	int cc;
+	int i;
+
+	cc = 0;
+	i = 0;
+	while (grid[i])
+	{
+		cc++;
+		i++;
+	}
+	if ((cc + 1) % 21 != 0)
+		return (0);
+	return (1);
 }
+
 
 int		tetchecker(char *grid)
 {
 	if (!linecount(grid))
-	{
-		printf("here1\n");
 		return (0);
-	}
 	else if (!hashcount(grid))
-	{
-		printf("here2\n");
 		return (0);
-	}
 	else if (!checkislands(grid))
-	{
-		printf("here3\n");
 		return (0);
-	}
 	else if (!charcount(grid))
-	{
-		printf("here4\n");
 		return (0);
-	}
 	return (1);
 }
