@@ -6,7 +6,7 @@
 /*   By: ckrommen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 15:50:47 by ckrommen          #+#    #+#             */
-/*   Updated: 2017/11/13 17:15:30 by ckrommen         ###   ########.fr       */
+/*   Updated: 2017/11/14 16:45:02 by quintonpo        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ t_piece	*buildpieces(char *map)
 	new = createpieces(grid, 0, 0, new);
 	new = assignletter(new);
 	new = assignmax(new);
-	freegrid(grid, ft_strlen(*grid));
+	freegrid(grid, ft_strlen(grid[0]));
 	return (new);
 }
 

@@ -6,7 +6,7 @@
 /*   By: ckrommen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 13:16:22 by ckrommen          #+#    #+#             */
-/*   Updated: 2017/11/11 13:35:52 by ckrommen         ###   ########.fr       */
+/*   Updated: 2017/11/14 17:18:43 by quintonpo        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ char	*filetoarr(char *av)
 		if (i >= 547)
 			return ("error");
 	}
+	s[i] = '\0';
 	if (!tetchecker(s))
 		return ("error");
 	close(fd);
