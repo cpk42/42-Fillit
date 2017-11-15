@@ -6,7 +6,7 @@
 /*   By: quintonponcelet <marvin@42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/10 14:25:52 by quintonpo         #+#    #+#             */
-/*   Updated: 2017/11/14 17:46:34 by ckrommen         ###   ########.fr       */
+/*   Updated: 2017/11/14 18:51:51 by ckrommen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int		linecount(char *grid)
 			lc++;
 		if (grid[i] == '\n' && grid[i + 1] == '\n')
 		{
-			if ((lc + 1) % 5 != 0 || !grid[i + 2])
+			if ((lc + 1) % 5 != 0 || !grid[i + 2] || lc > 5)
 				return (0);
 			lc = 0;
 			i += 2;
@@ -33,7 +33,7 @@ int		linecount(char *grid)
 		i++;
 	}
 	if (lc > 0)
-		if (lc % 4 != 0)
+		if (lc % 4 != 0 || lc > 4)
 			return (0);
 	return (1);
 }
@@ -41,21 +41,23 @@ int		linecount(char *grid)
 int		hashcount(char *grid)
 {
 	int hc;
+	int dc;
 	int i;
 
 	hc = 0;
+	dc = 0;
 	i = 0;
 	while (grid[i])
 	{
 		if (grid[i] != '.' && grid[i] != '#' && grid[i] != '\n')
 			return (0);
+		if (grid[i] == '.')
+			dc++;
 		if (grid[i] == '#')
 			hc++;
 		i++;
 	}
-	if (hc % 4 != 0)
-		return (0);
-	if (grid[i - 1] != '\n')
+	if (hc % 4 != 0 || hc < 1 || grid[i - 1] != '\n' || hc * 3 != dc)
 		return (0);
 	return (1);
 }
@@ -93,6 +95,7 @@ int		charcount(char *grid)
 			cc++;
 			i++;
 		}
+		printf("%d %c\n", cc, grid[i]);
 		if (cc != 4 && grid[i + 1])
 			return (0);
 		i++;
@@ -103,12 +106,24 @@ int		charcount(char *grid)
 int		tetchecker(char *grid)
 {
 	if (!linecount(grid))
+	{
+		printf("here1\n");
 		return (0);
+	}
 	else if (!hashcount(grid))
+	{
+		printf("here2\n");
 		return (0);
+	}
 	else if (!checkislands(grid))
+	{
+		printf("here3\n");
 		return (0);
+	}
 	else if (!charcount(grid))
+	{
+		printf("here4\n");
 		return (0);
+	}
 	return (1);
 }
