@@ -6,7 +6,7 @@
 /*   By: ckrommen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 13:16:22 by ckrommen          #+#    #+#             */
-/*   Updated: 2017/11/14 17:58:31 by ckrommen         ###   ########.fr       */
+/*   Updated: 2017/11/15 14:46:23 by ckrommen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int		find_sqrt(int n, int nb)
 		return (find_sqrt(n + 1, nb));
 }
 
-int		get_size(t_piece *new)
+int		getsize(t_piece *new)
 {
 	unsigned int size;
 	unsigned int i;

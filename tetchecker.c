@@ -6,7 +6,7 @@
 /*   By: quintonponcelet <marvin@42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/10 14:25:52 by quintonpo         #+#    #+#             */
-/*   Updated: 2017/11/14 20:12:32 by quintonpo        ###   ########.fr       */
+/*   Updated: 2017/11/15 14:17:47 by ckrommen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,47 +91,6 @@ int		checkislands(char *grid)
 	return (1);
 }
 
-/*int		checkislands(char *grid)
-{
-	int i;
-	int c;
-
-	i = 0;
-	c = 5;
-	while (grid[i])
-	{
-		if (ishash(grid[i]))
-			if (!ishash(grid[i + 1]) && !ishash(grid[i + 5]) &&
-				!ishash(grid[i - 1]) && !ishash(grid[i - 5]))
-				return (0);
-		i++;
-	}
-	return (1);
-}
-
-int		charcount(char *grid)
-{
-	int i;
-	int cc;
-
-	i = 0;
-	cc = 0;
-	while (grid[i])
-	{
-		cc = 0;
-		while (grid[i] != '\n')
-		{
-			cc++;
-			i++;
-		}
-		printf("%d %c\n", cc, grid[i]);
-		if (cc != 4 && grid[i + 1])
-			return (0);
-		i++;
-	}
-	return (1);
-}*/
-
 int		charcount(char *grid)
 {
 	int cc;
@@ -148,7 +107,6 @@ int		charcount(char *grid)
 		return (0);
 	return (1);
 }
-
 
 int		tetchecker(char *grid)
 {

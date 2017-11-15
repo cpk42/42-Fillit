@@ -6,7 +6,7 @@
 /*   By: ckrommen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/25 20:55:38 by ckrommen          #+#    #+#             */
-/*   Updated: 2017/11/14 17:59:20 by ckrommen         ###   ########.fr       */
+/*   Updated: 2017/11/15 14:44:36 by ckrommen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	main(int argc, char **av)
 		if (!ft_strcmp(map, "error"))
 			return ((int)error("error"));
 		new = buildpieces(map);
-		size = 2;
+		size = getsize(new);
 		while (!solved)
 		{
 			grid = creategrid(size);
