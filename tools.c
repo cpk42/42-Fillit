@@ -6,7 +6,7 @@
 /*   By: ckrommen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 13:16:22 by ckrommen          #+#    #+#             */
-/*   Updated: 2017/11/14 17:18:43 by quintonpo        ###   ########.fr       */
+/*   Updated: 2017/11/14 17:23:58 by quintonpo        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,8 @@ char	*filetoarr(char *av)
 	i = 0;
 	fd = open(av, O_RDONLY);
 	if (fd == -1)
+		return ("error");
+	if (fd == 0)
 		return ("error");
 	s = (char *)malloc(sizeof(char) * 547);
 	while (read(fd, &buf, 1))
