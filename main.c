@@ -6,7 +6,7 @@
 /*   By: ckrommen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/25 20:55:38 by ckrommen          #+#    #+#             */
-/*   Updated: 2017/11/11 12:48:05 by ckrommen         ###   ########.fr       */
+/*   Updated: 2017/11/14 17:59:20 by ckrommen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,12 @@ int	main(int argc, char **av)
 		new = buildpieces(map);
 		size = 2;
 		while (!solved)
-		 {
-		    grid = createmap(size);
-		    solved = fillit(size, 0, grid, &new);
-		    size = !solved ? size + 1 : size;
-		 }
-       		printgrid(grid, size);
+		{
+			grid = creategrid(size);
+			solved = fillit(size, 0, grid, &new);
+			size = !solved ? size + 1 : size;
+		}
+		printgrid(grid, size);
 		freegrid(grid, size);
 	}
 }

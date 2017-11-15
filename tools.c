@@ -6,7 +6,7 @@
 /*   By: ckrommen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 13:16:22 by ckrommen          #+#    #+#             */
-/*   Updated: 2017/11/14 17:23:58 by quintonpo        ###   ########.fr       */
+/*   Updated: 2017/11/14 17:58:31 by ckrommen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,33 +38,6 @@ int		get_size(t_piece *new)
 	return (i);
 }
 
-t_piece	**placepiece(t_piece *head, char **grid)
-{
-	int	i;
-
-	i = 0;	
-	while (i < 4)
-	{
-		grid[head->row[i]][head->col[i]] = head->letter;
-		i++;
-	}
-	head->placed = 1;
-	return (&head->next);
-}
-
-void	pickuppiece(t_piece *head, char **grid)
-{
-	int i;
-
-	i = 0;
-	while (i < 4)
-	{
-		grid[head->row[i]][head->col[i]] = '.';
-		i++;
-	}
-	head->placed = 0;
-}
-
 char	*filetoarr(char *av)
 {
 	char	*s;
@@ -91,4 +64,26 @@ char	*filetoarr(char *av)
 		return ("error");
 	close(fd);
 	return (s);
+}
+
+int		isempty(t_piece **head)
+{
+	t_piece *ptr;
+
+	ptr = *head;
+	while (ptr)
+	{
+		if (ptr->placed)
+			ptr = ptr->next;
+		else
+			return (0);
+	}
+	return (1);
+}
+
+int		ishash(char c)
+{
+	if (c == '#')
+		return (1);
+	return (0);
 }

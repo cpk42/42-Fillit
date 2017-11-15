@@ -6,7 +6,7 @@
 /*   By: ckrommen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 15:50:47 by ckrommen          #+#    #+#             */
-/*   Updated: 2017/11/14 16:45:02 by quintonpo        ###   ########.fr       */
+/*   Updated: 2017/11/14 18:02:59 by ckrommen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ t_piece	*buildpieces(char *map)
 	new = createpieces(grid, 0, 0, new);
 	new = assignletter(new);
 	new = assignmax(new);
-	freegrid(grid, ft_strlen(grid[0]));
+	freegrid(grid, ft_strlen(*grid));
 	return (new);
 }
 
@@ -45,7 +45,7 @@ void	freegrid(char **grid, int size)
 	}
 }
 
-int		find_greatest(int *arr)
+int		findgreatest(int *arr)
 {
 	int i;
 	int num;
@@ -61,17 +61,17 @@ int		find_greatest(int *arr)
 	return (num);
 }
 
-t_piece *assignmax(t_piece *head)
+t_piece	*assignmax(t_piece *head)
 {
 	t_piece *ptr;
 
 	ptr = head;
 	while (head)
-	  {
-	    translate(head, 0, 0);
-	    head->h = find_greatest(head->row);
-	    head->w = find_greatest(head->col);
-	    head = head->next;
-	  }
+	{
+		translate(head, 0, 0);
+		head->h = findgreatest(head->row);
+		head->w = findgreatest(head->col);
+		head = head->next;
+	}
 	return (ptr);
 }

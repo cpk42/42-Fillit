@@ -6,7 +6,7 @@
 /*   By: quintonponcelet <marvin@42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/10 14:25:52 by quintonpo         #+#    #+#             */
-/*   Updated: 2017/11/14 17:21:17 by quintonpo        ###   ########.fr       */
+/*   Updated: 2017/11/14 17:46:34 by ckrommen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,13 +58,6 @@ int		hashcount(char *grid)
 	if (grid[i - 1] != '\n')
 		return (0);
 	return (1);
-}
-
-int		ishash(char c)
-{
-	if (c == '#')
-		return (1);
-	return (0);
 }
 
 int		checkislands(char *grid)

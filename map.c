@@ -6,13 +6,13 @@
 /*   By: ckrommen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 13:13:51 by ckrommen          #+#    #+#             */
-/*   Updated: 2017/11/11 14:16:11 by ckrommen         ###   ########.fr       */
+/*   Updated: 2017/11/14 18:03:46 by ckrommen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-char	**createmap(int size)
+char	**creategrid(int size)
 {
 	char	**grid;
 	int		row;
@@ -54,21 +54,6 @@ void	printgrid(char **grid, int size)
 	}
 }
 
-int		isempty(t_piece **head)
-{
-  t_piece *ptr;
-
-  ptr = *head;
-  while (ptr)
-    {
-      if (ptr->placed)
-	ptr = ptr->next;
-      else
-	return (0);
-    }
-  return (1);
-}
-
 void	translate(t_piece *head, int row, int col)
 {
 	int x;
@@ -96,52 +81,29 @@ void	translate(t_piece *head, int row, int col)
 	}
 }
 
-void translatepiece(char **grid, t_piece *head, int row, int col, int size)
+t_piece	**placepiece(t_piece *head, char **grid)
 {
-	size_t i;
+	int	i;
 
 	i = 0;
-	translate(head, row, col);
 	while (i < 4)
 	{
-		if (head->col[i] < 0)
-			translatepiece(grid, head, row, col+1, size);
-		else if (head->row[i] >= size)
-			translatepiece(grid, head, row-1, col, size);
-		else if (grid[head->row[i]][head->col[i]] == '\0')
-			translatepiece(grid, head, row, col-1, size);
+		grid[head->row[i]][head->col[i]] = head->letter;
 		i++;
 	}
+	head->placed = 1;
+	return (&head->next);
 }
 
-/*
-void	translatepiece(char **grid, t_piece *head, int row, int col, int size)
+void	pickuppiece(t_piece *head, char **grid)
 {
-	size_t	i;
-//	int		size;
+	int i;
 
-//	size = (int)ft_strlen(grid[0]);
-//	printf("size %d\n", size);
 	i = 0;
-	translate(head, row, col);
 	while (i < 4)
 	{
-		if (head->col[i] < 0)
-		{
-			printf("col %d \n", head->col[i]);
-			translatepiece(grid, head, row, col + 1, size);
-		}
-		else if (head->row[i] >= size)
-		{
-			printf("row %d \n", head->row[i]);
-			translatepiece(grid, head, row - 1, col, size);
-		}
-		else if (grid[head->row[i]][head->col[i]] == '\0')
-		{
-			printf("row %d col %d \n", head->row[i], head->col[i]);
-			translatepiece(grid, head, row, col - 1, size);
-		}
+		grid[head->row[i]][head->col[i]] = '.';
 		i++;
 	}
+	head->placed = 0;
 }
-*/
